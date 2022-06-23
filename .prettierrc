@@ -1,0 +1,9 @@
+# trailingComma: 'es5'
+# semi: false
+# singleQuote: true
+# semi: false
+bracketSpacing: true
+bracketSameLine: true
+singleAttributePerLine: true
+svelteBracketNewLine: true
+htmlWhitespaceSensitivity: 'ignore'
