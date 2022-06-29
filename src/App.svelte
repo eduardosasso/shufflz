@@ -64,7 +64,7 @@
         id={position.toString()}
         class="{number
           ? 'bg-zinc-200'
-          : 'bg-zinc-300'} text-zinc-600 text-xl font-bold p-6 md:p-8 lg:p-10 rounded-lg animate__animated animate__faster"
+          : 'bg-zinc-300'} text-zinc-600 text-xl md:text-2xl font-bold p-6 md:p-12 lg:p-10 rounded-lg animate__animated animate__faster"
         on:click={() => move(position)}
       >
         {number || ""}
