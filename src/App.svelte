@@ -47,6 +47,11 @@
     clickedTile.classList.add(`animate__${animation[0]}`);
     emptyTile.classList.add(`animate__${animation[1]}`);
 
+    clickedTile.addEventListener("animationend", () => {
+      clickedTile.classList.remove(`animate__${animation[0]}`);
+      emptyTile.classList.remove(`animate__${animation[1]}`);
+    });
+
     finished = numbers.join() === shufflz.slice(0, -1).join();
     if (!finished) return;
 
