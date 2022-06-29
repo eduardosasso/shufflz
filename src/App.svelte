@@ -69,7 +69,7 @@
         id={position.toString()}
         class="{number
           ? 'bg-zinc-200'
-          : 'bg-zinc-300'} text-zinc-600 text-xl md:text-2xl font-bold p-6 md:p-12 lg:p-10 rounded-lg animate__animated animate__faster"
+          : 'bg-zinc-300'} text-zinc-600 text-xl md:text-2xl font-bold p-6 md:p-16 lg:p-10 rounded-lg animate__animated animate__faster"
         on:click={() => move(position)}
       >
         {number || ""}
@@ -77,7 +77,7 @@
     {/each}
   </div>
   <a href="https://github.com/eduardosasso/shufflz" target="_blank">
-    <img src="github.svg" alt="Shufflz" class="pt-12 pb-4 w-5" />
+    <img src="github.svg" alt="Shufflz" class="pt-12 md:pb-4 w-5" />
   </a>
 </div>
 
