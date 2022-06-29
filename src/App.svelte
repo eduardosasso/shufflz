@@ -76,9 +76,9 @@
       </button>
     {/each}
   </div>
-  <!-- <a href="https://github.com/eduardosasso/shufflz" target="_blank">
-    <img src="github.svg" alt="Shufflz" class="pt-12 sm:pb-4 w-5" />
-  </a> -->
+  <a href="https://github.com/eduardosasso/shufflz" target="_blank">
+    <img src="github.svg" alt="Shufflz" class="pt-12 w-5" />
+  </a>
 </div>
 
 {#if finished}
