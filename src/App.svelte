@@ -36,20 +36,20 @@
     await tick();
 
     const animation = {
-      [before]: ["slideInRight", "slideInLeft"],
-      [after]: ["slideInLeft", "slideInRight"],
-      [above]: ["slideInUp", "slideInDown"],
-      [below]: ["slideInDown", "slideInUp"],
+      [before]: "slideInRight",
+      [after]: "slideInLeft",
+      [above]: "slideInUp",
+      [below]: "slideInDown",
     }[empty];
 
     const clickedTile = document.getElementById(empty);
     const emptyTile = document.getElementById(position);
-    clickedTile.classList.add(`animate__${animation[0]}`);
-    emptyTile.classList.add(`animate__${animation[1]}`);
+    clickedTile.classList.add(`animate__${animation}`);
+    emptyTile.classList.add("animate__fadeIn");
 
     clickedTile.addEventListener("animationend", () => {
-      clickedTile.classList.remove(`animate__${animation[0]}`);
-      emptyTile.classList.remove(`animate__${animation[1]}`);
+      clickedTile.classList.remove(`animate__${animation}`);
+      emptyTile.classList.remove("animate__fadeIn");
     });
 
     finished = numbers.join() === shufflz.slice(0, -1).join();
@@ -69,16 +69,16 @@
         id={position.toString()}
         class="{number
           ? 'bg-zinc-200'
-          : 'bg-zinc-300'} text-zinc-600 text-xl md:text-2xl font-bold p-6 sm:p-14 md:p-20 lg:p-16 xl:8 rounded-lg animate__animated animate__faster"
+          : 'bg-zinc-300'} text-zinc-600 text-xl md:text-2xl font-bold p-6 sm:p-12 rounded-lg animate__animated animate__faster"
         on:click={() => move(position)}
       >
         {number || ""}
       </button>
     {/each}
   </div>
-  <a href="https://github.com/eduardosasso/shufflz" target="_blank">
-    <img src="github.svg" alt="Shufflz" class="pt-12 md:pb-4 w-5" />
-  </a>
+  <!-- <a href="https://github.com/eduardosasso/shufflz" target="_blank">
+    <img src="github.svg" alt="Shufflz" class="pt-12 sm:pb-4 w-5" />
+  </a> -->
 </div>
 
 {#if finished}
