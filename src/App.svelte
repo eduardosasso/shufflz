@@ -1,4 +1,6 @@
 <script>
+  import "animate.css";
+  import { tick } from "svelte";
   import { ConfettiExplosion } from "svelte-confetti-explosion";
 
   const numbers = Array(15)
@@ -15,7 +17,7 @@
 
   let shufflz = shuffle();
 
-  const move = (position) => {
+  const move = async (position) => {
     const before = position - 1;
     const after = position + 1;
     const above = position - numCols;
@@ -27,31 +29,42 @@
 
     if (shufflz[empty] !== null) return;
 
+    // change tile position
     shufflz[empty] = shufflz[position];
     shufflz[position] = null;
 
-    verify();
-  };
+    await tick();
 
-  const verify = () => {
+    const animation = {
+      [before]: ["slideInRight", "slideInLeft"],
+      [after]: ["slideInLeft", "slideInRight"],
+      [above]: ["slideInUp", "slideInDown"],
+      [below]: ["slideInDown", "slideInUp"],
+    }[empty];
+
+    const clickedTile = document.getElementById(empty);
+    const emptyTile = document.getElementById(position);
+    clickedTile.classList.add(`animate__${animation[0]}`);
+    emptyTile.classList.add(`animate__${animation[1]}`);
+
     finished = numbers.join() === shufflz.slice(0, -1).join();
-    // finished = shufflz.join().match(/1,2/) !== null;
     if (!finished) return;
 
     setTimeout(() => {
-      shufflz = shuffle();
+      shufflz = shuffle(); // restart game
     }, 3500);
   };
 </script>
 
 <div class="min-h-screen flex items-center justify-center flex-col">
-  <img src="shufflz.svg" alt="Shufflz" class="pb-14 pt-14 w-80" />
+  <img src="shufflz.svg" alt="Shufflz" class="pb-12 w-35 md:w-55" />
   <div class="grid gap-4 grid-cols-4 p-4 m-4 bg-zinc-100 rounded-lg">
     {#each shufflz as number, position}
       <button
+        id={position.toString()}
         class="{number
           ? 'bg-zinc-200'
-          : 'bg-zinc-300'} text-zinc-600 text-xl font-bold p-10 rounded-lg"
+          : 'bg-zinc-300'} text-zinc-600 text-xl font-bold p-6 md:p-8 lg:p-10 rounded-lg animate__animated animate__faster"
         on:click={() => move(position)}
       >
         {number || ""}
@@ -59,7 +72,7 @@
     {/each}
   </div>
   <a href="https://github.com/eduardosasso/shufflz" target="_blank">
-    <img src="github.svg" alt="Shufflz" class="pt-14 pb-4 w-8" />
+    <img src="github.svg" alt="Shufflz" class="pt-12 pb-4 w-5" />
   </a>
 </div>
 

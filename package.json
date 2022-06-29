@@ -21,6 +21,7 @@
     "vite": "^2.9.9"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "svelte-confetti-explosion": "^0.2.0"
   }
 }
