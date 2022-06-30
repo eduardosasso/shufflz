@@ -62,7 +62,9 @@
 </script>
 
 <div class="min-h-screen flex items-center justify-center flex-col">
-  <img src="shufflz.svg" alt="Shufflz" class="pb-12 w-35 md:w-55" />
+  <a href="/">
+    <img src="shufflz.svg" alt="Shufflz" class="pb-12 w-35 md:w-55" />
+  </a>
   <div class="grid gap-4 grid-cols-4 p-4 m-4 bg-zinc-100 rounded-lg">
     {#each shufflz as number, position}
       <button
